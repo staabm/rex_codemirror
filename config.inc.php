@@ -27,11 +27,34 @@ $REX[$mypage]['settings'] = array(
     'enter_fullscreen' => 'F11',
     'leave_fullscreen' => 'ESC',
     ),
+  'enabled_pages' => array(
+      array('page'=>'template'),
+      array('page'=>'module'),
+      array('page'=>'module','subpage'=>'actions'),
+      array('page'=>'xform', 'subpage'=>'email'),
+      array('page'=>'xform', 'subpage'=>'form_templates'),
+    ),
   );
 
 
+// CHECK IF ENABLED PAGE
+////////////////////////////////////////////////////////////////////////////////
+$enabled = false;
+foreach($REX[$mypage]['settings']['enabled_pages'] as $def){
+  foreach ($def as $k => $v) {
+    if(rex_request($k,'string')==$v){
+      $enabled = true;
+    }else{
+      $enabled = false;
+    }
+  }
+  if($enabled===true){
+    break;
+  }
+}
 
-if ($REX['REDAXO'])
+
+if($REX['REDAXO'] && $enabled===true)
 {
   // INCLUDE JS/CSS ASSETS @ HEAD
   //////////////////////////////////////////////////////////////////////////////
@@ -59,6 +82,7 @@ if ($REX['REDAXO'])
 
   function codemirror_enabler($params)
   {
+    global $REX;
     $script = '
 <!-- codemirror -->
 <script type="text/javascript">
