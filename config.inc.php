@@ -27,15 +27,17 @@ $REX[$mypage]['settings'] = array(
     'enter_fullscreen' => 'F11',
     'leave_fullscreen' => 'ESC',
     ),
-  // ENABLED BACKEND PAGES WHITELIST
+  // WHITELIST: ENABLED BACKEND PAGES
   'enabled_pages' => array(
       array('page'=>'template'),
       array('page'=>'module'),
       array('page'=>'xform', 'subpage'=>'email'),
       array('page'=>'xform', 'subpage'=>'form_templates'),
     ),
-  // DO NOT ENABLE IF TEXTAREA HAS CLASS
-  'disable_textarea_class' => 'no-codemiror'
+  // BLACKLIST: TEXTAREA CLASS NAMES
+  'disabled_textarea_classes' => array(
+    'no-codemiror',
+    ),
   );
 
 
@@ -116,33 +118,42 @@ CodeMirror.connect(window, "resize", function() {
 (function ($) { // NOCONFLICT ONLOAD ///////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+  var blacklist = ["'.implode('","',$REX['rex_codemirror']['settings']['disabled_textarea_classes']).'"];
   var codemirrors = {};
   i = 1;
 
   $("textarea").each(function(){
-    if($(this).hasClass("'.$REX['rex_codemirror']['settings']['disable_textarea_class'].'")){
-      continue;
-    }
-    codemirrors[i] = CodeMirror.fromTextArea(document.getElementById($(this).attr("id")), {
-      mode: "php",
-      lineNumbers: true,
-      lineWrapping: true,
-      theme:"'.$REX['rex_codemirror']['settings']['theme'].'",
-      matchBrackets: true,
-      mode: "application/x-httpd-php",
-      indentUnit: 2,
-      indentWithTabs: true,
-      enterMode: "keep",
-      tabMode: "shift",
-      extraKeys: {
-        "'.$REX['rex_codemirror']['settings']['keys']['enter_fullscreen'].'": function(cm) {
-          setFullScreen(cm, !isFullScreen(cm));
-        },
-        "'.$REX['rex_codemirror']['settings']['keys']['leave_fullscreen'].'": function(cm) {
-          if (isFullScreen(cm)) setFullScreen(cm, false);
-        }
+    me = $(this);
+    skip = false;
+    $.each(blacklist, function(i,v) {
+      if(me.hasClass(v)){
+        skip = true;
+        return false;
       }
     });
+
+    if(skip===false){
+      codemirrors[i] = CodeMirror.fromTextArea(document.getElementById($(this).attr("id")), {
+        mode: "php",
+        lineNumbers: true,
+        lineWrapping: true,
+        theme:"'.$REX['rex_codemirror']['settings']['theme'].'",
+        matchBrackets: true,
+        mode: "application/x-httpd-php",
+        indentUnit: 2,
+        indentWithTabs: true,
+        enterMode: "keep",
+        tabMode: "shift",
+        extraKeys: {
+          "'.$REX['rex_codemirror']['settings']['keys']['enter_fullscreen'].'": function(cm) {
+            setFullScreen(cm, !isFullScreen(cm));
+          },
+          "'.$REX['rex_codemirror']['settings']['keys']['leave_fullscreen'].'": function(cm) {
+            if (isFullScreen(cm)) setFullScreen(cm, false);
+          }
+        }
+      });
+    }
 
     i++;
   }); // textarea.each
