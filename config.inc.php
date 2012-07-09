@@ -63,8 +63,8 @@ if($REX['REDAXO'] && $enabled===true)
   <!-- '.$mypage.' -->
     <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/lib/lib/codemirror.css">
     <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/lib/theme/'.$theme.'.css">
+    <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/rex_codemirror_backend.css">
     <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/lib/codemirror.js"></script>
-    <!--<script src="../files/addons/be_style/plugins/'.$mypage.'/lib/lib/util/foldcode.js"></script>-->
     <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/mode/xml/xml.js"></script>
     <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/mode/javascript/javascript.js"></script>
     <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/mode/css/css.js"></script>
@@ -84,7 +84,7 @@ if($REX['REDAXO'] && $enabled===true)
   {
     global $REX;
     $script = '
-<!-- codemirror -->
+<!-- rex_codemirror -->
 <script type="text/javascript">
 
 function isFullScreen(cm) {
@@ -126,7 +126,7 @@ CodeMirror.connect(window, "resize", function() {
       mode: "php",
       lineNumbers: true,
       lineWrapping: true,
-      theme:"'.$REX['codemirror']['settings']['theme'].'",
+      theme:"'.$REX['rex_codemirror']['settings']['theme'].'",
       matchBrackets: true,
       mode: "application/x-httpd-php",
       indentUnit: 2,
@@ -134,10 +134,10 @@ CodeMirror.connect(window, "resize", function() {
       enterMode: "keep",
       tabMode: "shift",
       extraKeys: {
-        "'.$REX['codemirror']['settings']['keys']['enter_fullscreen'].'": function(cm) {
+        "'.$REX['rex_codemirror']['settings']['keys']['enter_fullscreen'].'": function(cm) {
           setFullScreen(cm, !isFullScreen(cm));
         },
-        "'.$REX['codemirror']['settings']['keys']['leave_fullscreen'].'": function(cm) {
+        "'.$REX['rex_codemirror']['settings']['keys']['leave_fullscreen'].'": function(cm) {
           if (isFullScreen(cm)) setFullScreen(cm, false);
         }
       }
@@ -149,7 +149,7 @@ CodeMirror.connect(window, "resize", function() {
 })(jQuery); // END NOCONFLICT ONLOAD ///////////////////////////////////////////
 
 </script>
-<!-- end codemirror -->
+<!-- end rex_codemirror -->
 ';
 
     return str_replace('</body>',$script.'</body>',$params['subject']);
