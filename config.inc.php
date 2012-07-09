@@ -27,13 +27,15 @@ $REX[$mypage]['settings'] = array(
     'enter_fullscreen' => 'F11',
     'leave_fullscreen' => 'ESC',
     ),
+  // ENABLED BACKEND PAGES WHITELIST
   'enabled_pages' => array(
       array('page'=>'template'),
       array('page'=>'module'),
-      array('page'=>'module','subpage'=>'actions'),
       array('page'=>'xform', 'subpage'=>'email'),
       array('page'=>'xform', 'subpage'=>'form_templates'),
     ),
+  // DO NOT ENABLE IF TEXTAREA HAS CLASS
+  'disable_textarea_class' => 'no-codemiror'
   );
 
 
@@ -42,11 +44,7 @@ $REX[$mypage]['settings'] = array(
 $enabled = false;
 foreach($REX[$mypage]['settings']['enabled_pages'] as $def){
   foreach ($def as $k => $v) {
-    if(rex_request($k,'string')==$v){
-      $enabled = true;
-    }else{
-      $enabled = false;
-    }
+    $enabled = (rex_request($k,'string')===$v) ? true : false;
   }
   if($enabled===true){
     break;
@@ -121,7 +119,10 @@ CodeMirror.connect(window, "resize", function() {
   var codemirrors = {};
   i = 1;
 
-  $("textarea").each(function(){ // loop: each textarea -> new instance
+  $("textarea").each(function(){
+    if($(this).hasClass("'.$REX['rex_codemirror']['settings']['disable_textarea_class'].'")){
+      continue;
+    }
     codemirrors[i] = CodeMirror.fromTextArea(document.getElementById($(this).attr("id")), {
       mode: "php",
       lineNumbers: true,
@@ -142,8 +143,9 @@ CodeMirror.connect(window, "resize", function() {
         }
       }
     });
+
     i++;
-  }); // each
+  }); // textarea.each
 
 ////////////////////////////////////////////////////////////////////////////////
 })(jQuery); // END NOCONFLICT ONLOAD ///////////////////////////////////////////
