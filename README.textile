@@ -1,3 +1,30 @@
 h2. rex_codemirror
 
 https://github.com/marijnh/CodeMirror2 als Redaxo be_style Plugin
+
+h4. Settings (config.inc)
+
+bc. // SETTINGS
+////////////////////////////////////////////////////////////////////////////////
+/* THEMES:
+ * ambiance, blackboard, cobalt, eclipse, elegant, erlang-dark,
+ * lesser-dark, monokai, neat, night, rubyblue, vibrant-ink, xq-dark,
+ */
+$REX[$mypage]['settings'] = array(
+  'theme'          =>'eclipse',
+  'keys' => array(
+    'enter_fullscreen' => 'F11',
+    'leave_fullscreen' => 'ESC',
+    ),
+  // WHITELIST: ENABLED BACKEND PAGES
+  'enabled_pages' => array(
+      array('page'=>'template'),
+      array('page'=>'module'),
+      array('page'=>'xform', 'subpage'=>'email'),
+      array('page'=>'xform', 'subpage'=>'form_templates'),
+    ),
+  // BLACKLIST: NO CODEMIRROR TEXTAREA CLASS NAMES
+  'disabled_textarea_classes' => array(
+    'no-codemirror',
+    ),
+  );

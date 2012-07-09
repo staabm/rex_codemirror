@@ -34,9 +34,9 @@ $REX[$mypage]['settings'] = array(
       array('page'=>'xform', 'subpage'=>'email'),
       array('page'=>'xform', 'subpage'=>'form_templates'),
     ),
-  // BLACKLIST: TEXTAREA CLASS NAMES
+  // BLACKLIST: NO CODEMIRROR TEXTAREA CLASS NAMES
   'disabled_textarea_classes' => array(
-    'no-codemiror',
+    'no-codemirror',
     ),
   );
 
