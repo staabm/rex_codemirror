@@ -8,7 +8,7 @@
  * @package redaxo 4.3.x/4.4.x
  */
 
-$mypage = 'codemirror';
+$mypage = 'rex_codemirror';
 
 $REX['ADDON']['version'][$mypage]     = '1.0.0';
 $REX['ADDON']['author'][$mypage]      = 'jdlx';

@@ -11,7 +11,7 @@
 $error = '';
 
 if ($error != '') {
-  $REX['ADDON']['installmsg']['codemirror'] = $error;
+  $REX['ADDON']['installmsg']['rex_codemirror'] = $error;
 } else {
-  $REX['ADDON']['install']['codemirror'] = 0;
+  $REX['ADDON']['install']['rex_codemirror'] = 0;
 }
