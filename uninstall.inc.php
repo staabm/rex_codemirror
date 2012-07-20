@@ -1,8 +1,8 @@
 <?php
 /**
- * Codemirror JS Plugin
+ * Codemirror2 be_style Plugin for Redaxo
  *
- * @version 1.0.0
+ * @version 1.0.5
  * @link https://github.com/marijnh/CodeMirror2
  * @author Redaxo be_style plugin: rexdev.de
  * @package redaxo 4.3.x/4.4.x
