@@ -29,6 +29,7 @@ $REX[$mypage]['settings'] = array(
     ),
   // WHITELIST: ENABLED BACKEND PAGES
   'enabled_pages' => array(
+      array('page'=>'content'),
       array('page'=>'template'),
       array('page'=>'module'),
       array('page'=>'xform', 'subpage'=>'email'),
@@ -36,7 +37,7 @@ $REX[$mypage]['settings'] = array(
     ),
   // BLACKLIST: NO CODEMIRROR TEXTAREA CLASS NAMES
   'disabled_textarea_classes' => array(
-    'no-codemirror',
+    'no-codemirror','markitup'
     ),
   );
 
@@ -87,6 +88,8 @@ if($REX['REDAXO'] && $enabled===true)
 <!-- rex_codemirror -->
 <script type="text/javascript">
 
+var codemirrors = {};
+
 function isFullScreen(cm) {
   return /\bCodeMirror-fullscreen\b/.test(cm.getWrapperElement().className);
 }
@@ -119,21 +122,37 @@ CodeMirror.connect(window, "resize", function() {
 ////////////////////////////////////////////////////////////////////////////////
 
   var blacklist = ["'.implode('","',$REX['rex_codemirror']['settings']['disabled_textarea_classes']).'"];
-  var codemirrors = {};
   i = 1;
 
   $("textarea").each(function(){
-    me = $(this);
+    area = $(this);
+
+    // CHECK BLACKLIST CLASSES
     skip = false;
     $.each(blacklist, function(i,v) {
-      if(me.hasClass(v)){
+      if(area.hasClass(v)){
         skip = true;
         return false;
       }
     });
 
+
     if(skip===false){
-      codemirrors[i] = CodeMirror.fromTextArea(document.getElementById($(this).attr("id")), {
+
+      // ANON CSS ID IF NECESSARY
+      id = area.attr("id");
+      if(id=="undefined"){
+        id = "cm-id-"+i;
+        area.attr("id",id);
+      }
+
+      // GET TEXTAREA DIMENSIONS
+      w = area.width();
+      h = area.height();
+      ml = area.css("margin-left");
+
+      // INIT CODEMIRROR
+      codemirrors[i] = CodeMirror.fromTextArea(area.get(0), {
         mode: "php",
         lineNumbers: true,
         lineWrapping: true,
@@ -153,6 +172,12 @@ CodeMirror.connect(window, "resize", function() {
           }
         }
       });
+
+      // (RE)APPLY TEXTAREA DIMENSIONS
+      codemirrors[id].getWrapperElement().style.width = w+"px";
+      codemirrors[id].getWrapperElement().style.marginLeft = ml;
+      codemirrors[id].getScrollerElement().style.height = h+"px";
+      codemirrors[id].refresh()
     }
 
     i++;

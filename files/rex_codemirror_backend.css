@@ -8,27 +8,44 @@
  */
 
 .CodeMirror {
-  border-radius: 4px 4px 4px 4px;
+  /*border-radius: 2px;*/
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
   background:white;
-}
+  border:1px solid #999999;
+  height:auto;
+  }
+.CodeMirror-scroll {
+  height: auto !important;
+  max-height:600px;
+  min-height:350px;
+  /*overflow-y: hidden !important;*/
+  overflow-x: auto !important;
+  }
 .CodeMirror pre {
   font-size: 12px;
   line-height: 12px;
-}
+  }
+
+/*FULLSCREEN STYLES*/
+
 .CodeMirror-fullscreen {
-  z-index: 9999;
   font-family:Monospace !important;
   font-size:12px !important;
   position:fixed !important;
   display:block !important;
   float:none !important;
-  top:2% !important;
+  top:5% !important;
   left:2% !important;
   width:95% !important;
-  height:95% !important;
+  height:92% !important;
   z-index:9999 !important;
   border:1px solid silver !important;
   box-shadow: 5px 5px 40px 10px #000 !important;
-  border-radius:6px !important;
+  border-radius:4px !important;
+  overflow: auto !important;
+  }
+.CodeMirror-fullscreen .CodeMirror-scroll {
+  max-height:none;
+  height:100% !important;
+  overflow: auto !important;
   }
