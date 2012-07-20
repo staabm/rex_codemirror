@@ -20,9 +20,10 @@ $REX['ADDON']['supportpage'][$mypage] = 'forum.redaxo.de';
 /* THEMES:
  * ambiance, blackboard, cobalt, eclipse, elegant, erlang-dark,
  * lesser-dark, monokai, neat, night, rubyblue, vibrant-ink, xq-dark,
+ * custom: jdlx
  */
 $REX[$mypage]['settings'] = array(
-  'theme'          =>'eclipse',
+  'theme'          =>'jdlx',
   'keys' => array(
     'enter_fullscreen' => 'F11',
     'leave_fullscreen' => 'ESC',
