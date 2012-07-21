@@ -2,7 +2,12 @@ h2. rex_codemirror
 
 https://github.com/marijnh/CodeMirror2 als Redaxo be_style Plugin
 
-h4. Settings (config.inc)
+Support Codemirror:
+ <a href='http://www.pledgie.com/campaigns/17784'><img alt='Click here to lend your support to: Fund CodeMirror development and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/17784.png?skin_name=chrome' border='0' /></a>
+
+h4. Plugin Settings
+
+Kein GUI, siehe: @config.inc.php@
 
 bc. // SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
