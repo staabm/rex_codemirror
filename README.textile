@@ -9,15 +9,17 @@ bc. // SETTINGS
 /* THEMES:
  * ambiance, blackboard, cobalt, eclipse, elegant, erlang-dark,
  * lesser-dark, monokai, neat, night, rubyblue, vibrant-ink, xq-dark,
+ * custom: jdlx
  */
 $REX[$mypage]['settings'] = array(
-  'theme'          =>'eclipse',
+  'theme'          =>'jdlx',
   'keys' => array(
     'enter_fullscreen' => 'F11',
     'leave_fullscreen' => 'ESC',
     ),
   // WHITELIST: ENABLED BACKEND PAGES
   'enabled_pages' => array(
+      array('page'=>'content'),
       array('page'=>'template'),
       array('page'=>'module'),
       array('page'=>'xform', 'subpage'=>'email'),
@@ -25,6 +27,7 @@ $REX[$mypage]['settings'] = array(
     ),
   // BLACKLIST: NO CODEMIRROR TEXTAREA CLASS NAMES
   'disabled_textarea_classes' => array(
-    'no-codemirror',
+    'no-codemirror','markitup'
     ),
+  'foldmode'          =>'tagRangeFinder', // @html: tagRangeFinder, @php: braceRangeFinder
   );

@@ -40,7 +40,7 @@ $REX[$mypage]['settings'] = array(
   'disabled_textarea_classes' => array(
     'no-codemirror','markitup'
     ),
-  'foldmode'          =>'braceRangeFinder', // tagRangeFinder
+  'foldmode'          =>'tagRangeFinder', // @html: tagRangeFinder, @php: braceRangeFinder
   );
 
 
