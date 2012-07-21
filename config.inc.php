@@ -26,7 +26,7 @@ $REX[$mypage]['settings'] = array(
   'theme'          =>'jdlx',
   'keys' => array(
     'enter_fullscreen' => 'F11',
-    'leave_fullscreen' => 'ESC',
+    'leave_fullscreen' => 'Esc',
     ),
   // WHITELIST: ENABLED BACKEND PAGES
   'enabled_pages' => array(
@@ -92,7 +92,7 @@ if($REX['REDAXO'] && $enabled===true)
 <script type="text/javascript">
 
 var codemirrors = {};
-var foldFunc = CodeMirror.newFoldFunction(CodeMirror.'.$REX['rex_codemirror']['settings']['foldmode'].'
+var foldFunc = CodeMirror.newFoldFunction(CodeMirror.'.$REX['rex_codemirror']['settings']['foldmode'].');
 
 function isFullScreen(cm) {
   return /\bCodeMirror-fullscreen\b/.test(cm.getWrapperElement().className);
