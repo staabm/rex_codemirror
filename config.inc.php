@@ -40,6 +40,7 @@ $REX[$mypage]['settings'] = array(
   'disabled_textarea_classes' => array(
     'no-codemirror','markitup'
     ),
+  'foldmode'          =>'braceRangeFinder', // tagRangeFinder
   );
 
 
@@ -67,6 +68,7 @@ if($REX['REDAXO'] && $enabled===true)
     <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/lib/theme/'.$theme.'.css">
     <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/rex_codemirror_backend.css">
     <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/lib/codemirror.js"></script>
+    <script src="../files/addons/be_style/plugins/'.$mypage.'/custom/lib/util/foldcode.js"></script>
     <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/mode/xml/xml.js"></script>
     <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/mode/javascript/javascript.js"></script>
     <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/mode/css/css.js"></script>
@@ -90,6 +92,7 @@ if($REX['REDAXO'] && $enabled===true)
 <script type="text/javascript">
 
 var codemirrors = {};
+var foldFunc = CodeMirror.newFoldFunction(CodeMirror.'.$REX['rex_codemirror']['settings']['foldmode'].'
 
 function isFullScreen(cm) {
   return /\bCodeMirror-fullscreen\b/.test(cm.getWrapperElement().className);
@@ -153,10 +156,10 @@ CodeMirror.connect(window, "resize", function() {
       ml = area.css("margin-left");
 
       // INIT CODEMIRROR
-      codemirrors[i] = CodeMirror.fromTextArea(area.get(0), {
+      codemirrors[id] = CodeMirror.fromTextArea(area.get(0), {
         mode: "php",
         lineNumbers: true,
-        lineWrapping: true,
+        lineWrapping: false,
         theme:"'.$REX['rex_codemirror']['settings']['theme'].'",
         matchBrackets: true,
         mode: "application/x-httpd-php",
@@ -164,6 +167,7 @@ CodeMirror.connect(window, "resize", function() {
         indentWithTabs: true,
         enterMode: "keep",
         tabMode: "shift",
+        onGutterClick: foldFunc,
         extraKeys: {
           "'.$REX['rex_codemirror']['settings']['keys']['enter_fullscreen'].'": function(cm) {
             setFullScreen(cm, !isFullScreen(cm));
