@@ -25,6 +25,15 @@
   font-size: 12px;
   line-height: 12px;
   }
+.CodeMirror div.fold-icon{
+  position: absolute;
+  right: 2px;
+  margin-top: -2px;
+  padding: 0 1px 1px 1px;
+  color: white;
+  background:rgba(160,160,160,1);
+  font-size: 9px;
+  border-radius: 2px;
 
 /*FULLSCREEN STYLES*/
 
@@ -47,5 +56,5 @@
 .CodeMirror-fullscreen .CodeMirror-scroll {
   max-height:none;
   height:100% !important;
-  overflow: auto !important;
+  /*overflow: auto !important;*/
   }
