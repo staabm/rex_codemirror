@@ -63,6 +63,7 @@ if($REX['REDAXO'] && $enabled===true)
   //////////////////////////////////////////////////////////////////////////////
   $theme = $REX[$mypage]['settings']['theme'];
   $header = '
+
   <!-- '.$mypage.' -->
     <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/vendor/lib/codemirror.css">
     <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/vendor/theme/'.$theme.'.css">
