@@ -64,16 +64,16 @@ if($REX['REDAXO'] && $enabled===true)
   $theme = $REX[$mypage]['settings']['theme'];
   $header = '
   <!-- '.$mypage.' -->
-    <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/lib/lib/codemirror.css">
-    <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/lib/theme/'.$theme.'.css">
+    <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/vendor/lib/codemirror.css">
+    <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/vendor/theme/'.$theme.'.css">
     <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/rex_codemirror_backend.css">
-    <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/lib/codemirror.js"></script>
+    <script src="../files/addons/be_style/plugins/'.$mypage.'/vendor/lib/codemirror.js"></script>
     <script src="../files/addons/be_style/plugins/'.$mypage.'/custom/lib/util/foldcode.js"></script>
-    <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/mode/xml/xml.js"></script>
-    <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/mode/javascript/javascript.js"></script>
-    <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/mode/css/css.js"></script>
-    <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/mode/clike/clike.js"></script>
-    <script src="../files/addons/be_style/plugins/'.$mypage.'/lib/mode/php/php.js"></script>
+    <script src="../files/addons/be_style/plugins/'.$mypage.'/vendor/mode/xml/xml.js"></script>
+    <script src="../files/addons/be_style/plugins/'.$mypage.'/vendor/mode/javascript/javascript.js"></script>
+    <script src="../files/addons/be_style/plugins/'.$mypage.'/vendor/mode/css/css.js"></script>
+    <script src="../files/addons/be_style/plugins/'.$mypage.'/vendor/mode/clike/clike.js"></script>
+    <script src="../files/addons/be_style/plugins/'.$mypage.'/vendor/mode/php/php.js"></script>
   <!-- end '.$mypage.' -->
   ';
   $header_include = 'return $params["subject"].\''.$header.'\';';
