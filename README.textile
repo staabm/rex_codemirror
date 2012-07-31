@@ -1,0 +1,38 @@
+h2. rex_codemirror
+
+https://github.com/marijnh/CodeMirror2 als Redaxo be_style Plugin
+
+Support Codemirror:
+ <a href='http://www.pledgie.com/campaigns/17784'><img alt='Click here to lend your support to: Fund CodeMirror development and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/17784.png?skin_name=chrome' border='0' /></a>
+
+h4. Plugin Settings
+
+Kein GUI, siehe: @config.inc.php@
+
+bc. // SETTINGS
+////////////////////////////////////////////////////////////////////////////////
+/* THEMES:
+ * ambiance, blackboard, cobalt, eclipse, elegant, erlang-dark,
+ * lesser-dark, monokai, neat, night, rubyblue, vibrant-ink, xq-dark,
+ * custom: jdlx
+ */
+$REX[$mypage]['settings'] = array(
+  'theme'          =>'jdlx',
+  'keys' => array(
+    'enter_fullscreen' => 'F11',
+    'leave_fullscreen' => 'ESC',
+    ),
+  // WHITELIST: ENABLED BACKEND PAGES
+  'enabled_pages' => array(
+      array('page'=>'content'),
+      array('page'=>'template'),
+      array('page'=>'module'),
+      array('page'=>'xform', 'subpage'=>'email'),
+      array('page'=>'xform', 'subpage'=>'form_templates'),
+    ),
+  // BLACKLIST: NO CODEMIRROR TEXTAREA CLASS NAMES
+  'disabled_textarea_classes' => array(
+    'no-codemirror','markitup'
+    ),
+  'foldmode'          =>'tagRangeFinder', // @html: tagRangeFinder, @php: braceRangeFinder
+  );
