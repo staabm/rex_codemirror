@@ -8,8 +8,6 @@
  */
 
 .CodeMirror {
-  /*border-radius: 2px;*/
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
   background:white;
   border:1px solid #999999;
   height:auto;
@@ -18,7 +16,6 @@
   height: auto !important;
   max-height:600px;
   min-height:350px;
-  /*overflow-y: hidden !important;*/
   overflow-x: auto !important;
   }
 .CodeMirror pre {
@@ -57,5 +54,21 @@
 .CodeMirror-fullscreen .CodeMirror-scroll {
   max-height:none;
   height:100% !important;
-  /*overflow: auto !important;*/
   }
+
+
+/* AGK EDITS & RESETS */
+
+/* page=template */
+#rex-page-template.be-style-agb-skin div.rex-form-template-editmode div.rex-form-row p.rex-form-textarea textarea#content,
+/* page=module */
+#rex-page-module.be-style-agb-skin div.rex-form-module-editmode div.rex-form-row p.rex-form-textarea textarea#eingabe,
+#rex-page-module.be-style-agb-skin div.rex-form-module-editmode div.rex-form-row p.rex-form-textarea textarea#ausgabe,
+/* page=module&subpage=actions */
+#rex-page-module.be-style-agb-skin div.rex-action-editmode div.rex-form-row p.rex-form-textarea textarea#previewaction,
+#rex-page-module.be-style-agb-skin div.rex-action-editmode div.rex-form-row p.rex-form-textarea textarea#presaveaction,
+#rex-page-module.be-style-agb-skin div.rex-action-editmode div.rex-form-row p.rex-form-textarea textarea#postsaveaction {
+    clear: left;
+    margin-left: 6px !important;
+    width: 729px !important;
+}
