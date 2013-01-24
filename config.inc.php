@@ -28,25 +28,23 @@ $REX[$mypage]['settings'] = array(
     'enter_fullscreen' => 'F11',
     'leave_fullscreen' => 'Esc',
     ),
-  // WHITELIST: ENABLED BACKEND PAGES
-  'enabled_pages' => array(
+  // AUTOENABLED BACKEND PAGES - ANY TEXTAREA WILL GET CODEMIRROR
+  'autoenabled_pages' => array(
       array('page'=>'template'),
       array('page'=>'module'),
       array('page'=>'xform', 'subpage'=>'email'),
       array('page'=>'xform', 'subpage'=>'form_templates'),
     ),
-  // BLACKLIST: NO CODEMIRROR TEXTAREA CLASS NAMES
-  'disabled_textarea_classes' => array(
-    'no-codemirror','markitup'
-    ),
-  'foldmode'          =>'tagRangeFinder', // @html: tagRangeFinder, @php: braceRangeFinder
+  // TRIGGER CLASS - WILL ENABLE CODEMIRROR OUTSIDE AUTOENABLED PAGES
+  'trigger_class' => 'rex-codemirror',
+  'foldmode'        =>'tagRangeFinder', // @html: tagRangeFinder, @php: braceRangeFinder
   );
 
 
 // CHECK IF ENABLED PAGE
 ////////////////////////////////////////////////////////////////////////////////
 $enabled_page = false;
-foreach($REX[$mypage]['settings']['enabled_pages'] as $def){
+foreach($REX[$mypage]['settings']['autoenabled_pages'] as $def){
   foreach ($def as $k => $v) {
     $enabled_page = (rex_request($k,'string')===$v) ? true : false;
   }
@@ -57,7 +55,7 @@ foreach($REX[$mypage]['settings']['enabled_pages'] as $def){
 
 $REX[$mypage]['settings']['selector'] = $enabled_page===true
                                       ? 'textarea'
-                                      : 'textarea.rex-codemirror';
+                                      : 'textarea.'.$REX[$mypage]['settings']['trigger_class'];
 
 if($REX['REDAXO'])
 {
