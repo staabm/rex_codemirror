@@ -67,13 +67,6 @@ if($REX['REDAXO'] && $enabled===true)
     <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/vendor/lib/codemirror.css">
     <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/vendor/theme/'.$theme.'.css">
     <link rel="stylesheet" href="../files/addons/be_style/plugins/'.$mypage.'/rex_codemirror_backend.css">
-    <script src="../files/addons/be_style/plugins/'.$mypage.'/vendor/lib/codemirror.js"></script>
-    <script src="../files/addons/be_style/plugins/'.$mypage.'/custom/lib/util/foldcode.js"></script>
-    <script src="../files/addons/be_style/plugins/'.$mypage.'/vendor/mode/xml/xml.js"></script>
-    <script src="../files/addons/be_style/plugins/'.$mypage.'/vendor/mode/javascript/javascript.js"></script>
-    <script src="../files/addons/be_style/plugins/'.$mypage.'/vendor/mode/css/css.js"></script>
-    <script src="../files/addons/be_style/plugins/'.$mypage.'/vendor/mode/clike/clike.js"></script>
-    <script src="../files/addons/be_style/plugins/'.$mypage.'/vendor/mode/php/php.js"></script>
   <!-- end '.$mypage.' -->
   ';
   $header_include = 'return $params["subject"].\''.$header.'\';';
@@ -89,109 +82,20 @@ if($REX['REDAXO'] && $enabled===true)
     global $REX;
     $script = '
 <!-- rex_codemirror -->
-<script type="text/javascript">
-
-var codemirrors = {};
-var foldFunc = CodeMirror.newFoldFunction(CodeMirror.'.$REX['rex_codemirror']['settings']['foldmode'].');
-
-function isFullScreen(cm) {
-  return /\bCodeMirror-fullscreen\b/.test(cm.getWrapperElement().className);
-}
-function winHeight() {
-  return window.innerHeight || (document.documentElement || document.body).clientHeight;
-}
-function setFullScreen(cm, full) {
-  var wrap = cm.getWrapperElement(), scroll = cm.getScrollerElement();
-  if (full) {
-    wrap.className += " CodeMirror-fullscreen";
-    scroll.style.height = winHeight() + "px";
-    document.documentElement.style.overflow = "hidden";
-    cm.setOption("lineWrapping", false);
-  } else {
-    wrap.className = wrap.className.replace(" CodeMirror-fullscreen", "");
-    scroll.style.height = "";
-    document.documentElement.style.overflow = "";
-    cm.setOption("lineWrapping", true);
-  }
-  cm.refresh();
-}
-CodeMirror.connect(window, "resize", function() {
-  var showing = document.body.getElementsByClassName("CodeMirror-fullscreen")[0];
-  if (!showing) return;
-  showing.CodeMirror.getScrollerElement().style.height = winHeight() + "px";
-});
-
-
-(function ($) { // NOCONFLICT ONLOAD ///////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-  var blacklist = ["'.implode('","',$REX['rex_codemirror']['settings']['disabled_textarea_classes']).'"];
-  i = 1;
-
-  $("textarea").each(function(){
-    area = $(this);
-
-    // CHECK BLACKLIST CLASSES
-    skip = false;
-    $.each(blacklist, function(i,v) {
-      if(area.hasClass(v)){
-        skip = true;
-        return false;
-      }
-    });
-
-
-    if(skip===false){
-
-      // ANON CSS ID IF NECESSARY
-      id = area.attr("id");
-      if(id=="undefined"){
-        id = "cm-id-"+i;
-        area.attr("id",id);
-      }
-
-      // GET TEXTAREA DIMENSIONS
-      w = area.width();
-      h = area.height();
-      ml = area.css("margin-left");
-
-      // INIT CODEMIRROR
-      codemirrors[id] = CodeMirror.fromTextArea(area.get(0), {
-        mode: "php",
-        lineNumbers: true,
-        lineWrapping: false,
-        theme:"'.$REX['rex_codemirror']['settings']['theme'].'",
-        matchBrackets: true,
-        mode: "application/x-httpd-php",
-        indentUnit: 2,
-        indentWithTabs: true,
-        enterMode: "keep",
-        tabMode: "shift",
-        onGutterClick: foldFunc,
-        extraKeys: {
-          "'.$REX['rex_codemirror']['settings']['keys']['enter_fullscreen'].'": function(cm) {
-            setFullScreen(cm, !isFullScreen(cm));
-          },
-          "'.$REX['rex_codemirror']['settings']['keys']['leave_fullscreen'].'": function(cm) {
-            if (isFullScreen(cm)) setFullScreen(cm, false);
-          }
-        }
-      });
-
-      // (RE)APPLY TEXTAREA DIMENSIONS
-      codemirrors[id].getWrapperElement().style.width = w+"px";
-      codemirrors[id].getWrapperElement().style.marginLeft = ml;
-      codemirrors[id].getScrollerElement().style.height = h+"px";
-      codemirrors[id].refresh()
-    }
-
-    i++;
-  }); // textarea.each
-
-////////////////////////////////////////////////////////////////////////////////
-})(jQuery); // END NOCONFLICT ONLOAD ///////////////////////////////////////////
-
-</script>
+  <script src="../files/addons/be_style/plugins/rex_codemirror/vendor/lib/codemirror.js"></script>
+  <script src="../files/addons/be_style/plugins/rex_codemirror/custom/lib/util/foldcode.js"></script>
+  <script src="../files/addons/be_style/plugins/rex_codemirror/vendor/mode/xml/xml.js"></script>
+  <script src="../files/addons/be_style/plugins/rex_codemirror/vendor/mode/javascript/javascript.js"></script>
+  <script src="../files/addons/be_style/plugins/rex_codemirror/vendor/mode/css/css.js"></script>
+  <script src="../files/addons/be_style/plugins/rex_codemirror/vendor/mode/clike/clike.js"></script>
+  <script src="../files/addons/be_style/plugins/rex_codemirror/vendor/mode/php/php.js"></script>
+  <script type="text/javascript">
+    var RCM_foldmode   = "'.$REX['rex_codemirror']['settings']['foldmode'].'";
+    var RCM_blacklist  = ["'.implode('","',$REX['rex_codemirror']['settings']['disabled_textarea_classes']).'"];
+    var RCM_theme      = "'.$REX['rex_codemirror']['settings']['theme'].'";
+    var RCM_extra_keys = {"'.$REX['rex_codemirror']['settings']['keys']['enter_fullscreen'].'": function(cm){setFullScreen(cm, !isFullScreen(cm));}, "'.$REX['rex_codemirror']['settings']['keys']['leave_fullscreen'].'": function(cm){if (isFullScreen(cm)) setFullScreen(cm, false);}};
+  </script>
+  <script src="../files/addons/be_style/plugins/rex_codemirror/rex_codemirror.js"></script>
 <!-- end rex_codemirror -->
 ';
 
