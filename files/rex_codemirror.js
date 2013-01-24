@@ -34,7 +34,7 @@ CodeMirror.connect(window, "resize", function() {
 
   i = 1;
 
-  $("textarea").each(function(){
+  $(RCM_selector).each(function(){
     area = $(this);
 
     // CHECK BLACKLIST CLASSES

@@ -45,18 +45,21 @@ $REX[$mypage]['settings'] = array(
 
 // CHECK IF ENABLED PAGE
 ////////////////////////////////////////////////////////////////////////////////
-$enabled = false;
+$enabled_page = false;
 foreach($REX[$mypage]['settings']['enabled_pages'] as $def){
   foreach ($def as $k => $v) {
-    $enabled = (rex_request($k,'string')===$v) ? true : false;
+    $enabled_page = (rex_request($k,'string')===$v) ? true : false;
   }
-  if($enabled===true){
+  if($enabled_page===true){
     break;
   }
 }
 
+$REX[$mypage]['settings']['selector'] = $enabled_page===true
+                                      ? 'textarea'
+                                      : 'textarea.rex-codemirror';
 
-if($REX['REDAXO'] && $enabled===true)
+if($REX['REDAXO'])
 {
   // INCLUDE JS/CSS ASSETS @ HEAD
   //////////////////////////////////////////////////////////////////////////////
@@ -90,6 +93,7 @@ if($REX['REDAXO'] && $enabled===true)
   <script src="../files/addons/be_style/plugins/rex_codemirror/vendor/mode/clike/clike.js"></script>
   <script src="../files/addons/be_style/plugins/rex_codemirror/vendor/mode/php/php.js"></script>
   <script type="text/javascript">
+    var RCM_selector   = "'.$REX['rex_codemirror']['settings']['selector'].'";
     var RCM_foldmode   = "'.$REX['rex_codemirror']['settings']['foldmode'].'";
     var RCM_blacklist  = ["'.implode('","',$REX['rex_codemirror']['settings']['disabled_textarea_classes']).'"];
     var RCM_theme      = "'.$REX['rex_codemirror']['settings']['theme'].'";
