@@ -30,7 +30,6 @@ $REX[$mypage]['settings'] = array(
     ),
   // WHITELIST: ENABLED BACKEND PAGES
   'enabled_pages' => array(
-      array('page'=>'content'),
       array('page'=>'template'),
       array('page'=>'module'),
       array('page'=>'xform', 'subpage'=>'email'),
