@@ -94,10 +94,10 @@ if($REX['REDAXO'])
   <script src="../files/addons/be_style/plugins/rex_codemirror/vendor/mode/php/php.js"></script>
   <script type="text/javascript">
     var RCM_selector   = "'.$REX['rex_codemirror']['settings']['selector'].'";
-    var RCM_foldmode   = "'.$REX['rex_codemirror']['settings']['foldmode'].'";
     var RCM_blacklist  = ["'.implode('","',$REX['rex_codemirror']['settings']['disabled_textarea_classes']).'"];
     var RCM_theme      = "'.$REX['rex_codemirror']['settings']['theme'].'";
     var RCM_extra_keys = {"'.$REX['rex_codemirror']['settings']['keys']['enter_fullscreen'].'": function(cm){setFullScreen(cm, !isFullScreen(cm));}, "'.$REX['rex_codemirror']['settings']['keys']['leave_fullscreen'].'": function(cm){if (isFullScreen(cm)) setFullScreen(cm, false);}};
+    var RCM_fold_func  = CodeMirror.newFoldFunction(CodeMirror.'.$REX['rex_codemirror']['settings']['foldmode'].');
   </script>
   <script src="../files/addons/be_style/plugins/rex_codemirror/rex_codemirror.js"></script>
 <!-- end rex_codemirror -->

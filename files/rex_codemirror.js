@@ -1,5 +1,4 @@
 var codemirrors = {};
-var foldFunc = CodeMirror.newFoldFunction(CodeMirror.RCM_foldmode);
 
 function isFullScreen(cm) {
   return /\bCodeMirror-fullscreen\b/.test(cm.getWrapperElement().className);
@@ -73,7 +72,7 @@ CodeMirror.connect(window, "resize", function() {
         indentWithTabs: true,
         enterMode: "keep",
         tabMode: "shift",
-        onGutterClick: foldFunc,
+        onGutterClick: RCM_fold_func,
         extraKeys: RCM_extra_keys
       });
 
