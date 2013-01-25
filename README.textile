@@ -4,17 +4,17 @@ https://github.com/marijnh/CodeMirror2 als Redaxo be_style Plugin
 
 h2. Anwendung
 
-h5. Codemirror für Textareas aktivieren
+h4. Codemirror für Textareas aktivieren
 
 *Pauschal* für alle Textareas einer backend page aktivieren: key der Redaxo backend page(subpage) in die Settings eintragen
 *Individuell* für eine Textarea: CSS Klasse @rex-codemirror@ vergeben
 
-h5. Fullscreen Modus
+h4. Fullscreen Modus
 
 Durch drücken der @F11@ Taste wird die Codemirror Textarea auf den gesamten viewport erweitert.
 Nochmaliges drücken von @F11@ oder @Esc@ stellt die normale Darstellung wieder her.
 
-h5. Individueller FoldMode
+h4. Individueller FoldMode
 
 In den Settings ist als default der foldmode @tagRangeFinder@ definiert.
 Um gezielt für eine Textarea einen anderen foldmode zu aktivieren, muß dieser per @data-attribute@ angegeben werden:
