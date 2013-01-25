@@ -9,7 +9,7 @@ h2. Settings
 
 Das Plugin hat kein GUI, Einstellungen sind direkt in der Datei @config.inc.php@ vorzunehmen:
 
-bc. // SETTINGS
+<pre lang="php"><code>// SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
 /* THEMES:
  * ambiance, blackboard, cobalt, eclipse, elegant, erlang-dark,
@@ -32,7 +32,7 @@ $REX[$mypage]['settings'] = array(
   // TRIGGER CLASS - WILL ENABLE CODEMIRROR OUTSIDE AUTOENABLED PAGES
   'trigger_class' => 'rex-codemirror',
   'foldmode'        =>'tagRangeFinder', // @html: tagRangeFinder, @php: braceRangeFinder
-  );
+  );</code></pre>
 
 h2. Screenshots
 
