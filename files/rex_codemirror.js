@@ -48,6 +48,19 @@ CodeMirror.connect(window, "resize", function() {
     h = area.height();
     ml = area.css("margin-left");
 
+    // INDIVIDUAL FOLD MODE
+    switch(area.attr("data-foldmode")){
+      case'tagRangeFinder':
+        fold_func = CodeMirror.newFoldFunction(CodeMirror.tagRangeFinder);
+      break;
+      case'braceRangeFinder':
+        fold_func = CodeMirror.newFoldFunction(CodeMirror.braceRangeFinder);
+      break;
+      default:
+        fold_func = RCM_fold_func;
+    }
+
+
     // INIT CODEMIRROR
     codemirrors[id] = CodeMirror.fromTextArea(area.get(0), {
       mode: "php",
@@ -60,7 +73,7 @@ CodeMirror.connect(window, "resize", function() {
       indentWithTabs: true,
       enterMode: "keep",
       tabMode: "shift",
-      onGutterClick: RCM_fold_func,
+      onGutterClick: fold_func,
       extraKeys: RCM_extra_keys
     });
 
