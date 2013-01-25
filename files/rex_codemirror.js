@@ -1,3 +1,12 @@
+/**
+ * Codemirror2 be_style Plugin for Redaxo
+ *
+ * @version 1.2.0
+ * @link https://github.com/marijnh/CodeMirror2
+ * @author Redaxo be_style plugin: rexdev.de
+ * @package redaxo 4.3.x/4.4.x
+ */
+
 var codemirrors = {};
 
 function isFullScreen(cm) {
