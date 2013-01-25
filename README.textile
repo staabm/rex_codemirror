@@ -9,8 +9,8 @@ h2. Anwendung
 
 h5. Codemirror für Textareas aktivieren
 
-* *pauschal* für alle Textareas einer backend page aktivieren: key der Redaxo backend page(subpage) in die Settings eintragen
-* *individuell* für eine Textarea: CSS Klassen @rex-codemirror@ vergeben
+*Pauschal* für alle Textareas einer backend page aktivieren: key der Redaxo backend page(subpage) in die Settings eintragen
+*Individuell* für eine Textarea: CSS Klasse @rex-codemirror@ vergeben
 
 h5. Fullscreen Modus
 
@@ -26,7 +26,8 @@ bc. <textarea class="rex-codemirror" data-foldmode="braceRangeFinder">...</texta
 
 h2. Settings
 
-Das Plugin hat kein GUI, Einstellungen sind direkt in der Datei @config.inc.php@ vorzunehmen:
+Das Plugin hat ein sinnvolles Set an default Einstellungen definiert welche in den meisten Fällen ausreichend sein sollten.
+Will man dennoch Einstellungen ändern sind diese direkt in der Datei @config.inc.php@ vorzunehmen:
 
 <pre lang="php"><code>// SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
