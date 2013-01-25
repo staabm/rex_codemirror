@@ -2,9 +2,6 @@ h2. rex_codemirror
 
 https://github.com/marijnh/CodeMirror2 als Redaxo be_style Plugin
 
-Support Codemirror:
- <a href='http://www.pledgie.com/campaigns/17784'><img alt='Click here to lend your support to: Fund CodeMirror development and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/17784.png?skin_name=chrome' border='0' /></a>
-
 h2. Anwendung
 
 h5. Codemirror für Textareas aktivieren
@@ -71,3 +68,8 @@ h5. Backend Page Module (auto_enabled)
 h5. Backend Page Aktionen (auto_enabled)
 
 !http://rexdev.de/index.php?rex_img_type=github_readme&rex_img_file=lnk_rex_codemirror_actions.png!
+
+
+h2. Support Codemirror:
+
+ <a href='http://www.pledgie.com/campaigns/17784'><img alt='Click here to lend your support to: Fund CodeMirror development and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/17784.png?skin_name=chrome' border='0' /></a>
