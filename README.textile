@@ -1,6 +1,6 @@
 h2. rex_codemirror
 
-https://github.com/marijnh/CodeMirror2 als Redaxo be_style Plugin
+https://github.com/marijnh/CodeMirror als Redaxo be_style Plugin
 
 h2. Anwendung
 
