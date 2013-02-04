@@ -44,16 +44,16 @@ $REX[$mypage]['settings'] = array(
 // CHECK IF ENABLED PAGE
 ////////////////////////////////////////////////////////////////////////////////
 $enabled_page = false;
-foreach($REX[$mypage]['settings']['autoenabled_pages'] as $def){
+foreach($REX[$mypage]['settings']['autoenabled_pages'] as $def) {
   foreach ($def as $k => $v) {
-    $enabled_page = (rex_request($k,'string')===$v) ? true : false;
+    $enabled_page = rex_request($k,'string') === $v;
   }
-  if($enabled_page===true){
+  if($enabled_page){
     break;
   }
 }
 
-$REX[$mypage]['settings']['selector'] = $enabled_page===true
+$REX[$mypage]['settings']['selector'] = $enabled_page
                                       ? 'textarea'
                                       : 'textarea.'.$REX[$mypage]['settings']['trigger_class'];
 
